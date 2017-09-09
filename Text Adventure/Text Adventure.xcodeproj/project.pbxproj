@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		261823561F645285008BBC9D /* human_music.wav in Resources */ = {isa = PBXBuildFile; fileRef = 261823551F645285008BBC9D /* human_music.wav */; };
 		261823591F645658008BBC9D /* UINavBarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261823581F645658008BBC9D /* UINavBarExtensions.swift */; };
+		266FA8481F645FB6009C10D3 /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266FA8471F645FB6009C10D3 /* CGFloatExtensions.swift */; };
 		26F0FDD91EB7B05800955011 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0FDD81EB7B05800955011 /* AppDelegate.swift */; };
 		26F0FDDE1EB7B05800955011 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26F0FDDC1EB7B05800955011 /* Main.storyboard */; };
 		26F0FDE01EB7B05800955011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F0FDDF1EB7B05800955011 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		261823551F645285008BBC9D /* human_music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = human_music.wav; sourceTree = "<group>"; };
 		261823581F645658008BBC9D /* UINavBarExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavBarExtensions.swift; sourceTree = "<group>"; };
+		266FA8471F645FB6009C10D3 /* CGFloatExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
 		26F0FDD51EB7B05800955011 /* Text Adventure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Text Adventure.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F0FDD81EB7B05800955011 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26F0FDDD1EB7B05800955011 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				261823581F645658008BBC9D /* UINavBarExtensions.swift */,
+				266FA8471F645FB6009C10D3 /* CGFloatExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			files = (
 				26F0FDF31EB7D6B300955011 /* MainMenuViewController.swift in Sources */,
 				26F0FDEF1EB7D60900955011 /* TextViewController.swift in Sources */,
+				266FA8481F645FB6009C10D3 /* CGFloatExtensions.swift in Sources */,
 				26F0FDD91EB7B05800955011 /* AppDelegate.swift in Sources */,
 				26F0FDF71EB7E6F000955011 /* Place.swift in Sources */,
 				26F0FDF51EB7E62200955011 /* Map.swift in Sources */,
