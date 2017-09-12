@@ -9,6 +9,12 @@
 import UIKit
 
 class CreditViewController: UIViewController {
+    
+    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var pic: UIImageView!
+    
+    let kNavBarToText: CGFloat = 38.0
+    let kTextToPic: CGFloat = 50.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +28,30 @@ class CreditViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let screenSize = self.view.bounds
+        let width = screenSize.width
+        let height = screenSize.height
+        
+        if let navigationBar = navigationController?.navigationBar {
+            let navBarHeight = navigationBar.getHeight()
+            
+            let goodTextSize = textLabel.sizeThatFits(CGSize(width: width - 24, height: height))
+            textLabel.frame = CGRect(x: 12,
+                                      y: navBarHeight + CGFloat.convertHeight(h: kNavBarToText, screenSize: screenSize),
+                                      width: width - 24,
+                                      height: goodTextSize.height)
+            
+            let picWidth = pic.bounds.width
+            let picHeight = pic.bounds.height
+            pic.frame = CGRect(x: width/2 - picWidth/2,
+                                            y: textLabel.frame.maxY + CGFloat.convertHeight(h: kTextToPic, screenSize: screenSize),
+                                            width: picWidth,
+                                            height: picHeight)
+            
+        }
     }
-    */
+
 
 }

@@ -8,7 +8,25 @@
 
 import UIKit
 
+let kTextButtonWidth: CGFloat = 237.0
+let kTextButtonHeight: CGFloat = 47.0
+
+let kLeftTextMargin: CGFloat = 12.0
+let kRightTextMargin: CGFloat = 12.0
+
+let kNavBarToFirst: CGFloat = 38.0
+let kFirstToSecond: CGFloat = 24.0
+let kSecondToThird: CGFloat = 24.0
+let kThirdToFourth: CGFloat = 24.0
+let kFourthToBegin: CGFloat = 24.0
+
 class TextViewController: UIViewController {
+    
+    @IBOutlet weak var firstTextLabel: UILabel!
+    @IBOutlet weak var secondTextLabel: UILabel!
+    @IBOutlet weak var thirdTextLabel: UILabel!
+    @IBOutlet weak var fourthTextLabel: UILabel!
+    @IBOutlet weak var beginButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +41,6 @@ class TextViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    @IBOutlet weak var beginButton: UIButton!
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -31,14 +48,49 @@ class TextViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let screenSize = self.view.bounds
+        let width = screenSize.width
+        let height = screenSize.height
+        let adjustedSize = CGSize(width: width - (kLeftTextMargin + kRightTextMargin), height: height)
+        
+        if let navigationBar = navigationController?.navigationBar {
+            let navBarHeight = navigationBar.getHeight()
+            
+            let goodFirstSize = firstTextLabel.sizeThatFits(adjustedSize)
+            firstTextLabel.frame = CGRect(x: kLeftTextMargin,
+                                      y: navBarHeight + CGFloat.convertHeight(h: kNavBarToFirst, screenSize: screenSize),
+                                      width: adjustedSize.width,
+                                      height: goodFirstSize.height)
+            
+            let goodSecondSize = secondTextLabel.sizeThatFits(adjustedSize)
+            secondTextLabel.frame = CGRect(x: kLeftTextMargin,
+                                            y: firstTextLabel.frame.maxY + CGFloat.convertHeight(h: kFirstToSecond, screenSize: screenSize),
+                                            width: adjustedSize.width,
+                                            height: goodSecondSize.height)
+            
+            let goodThirdSize = thirdTextLabel.sizeThatFits(adjustedSize)
+            thirdTextLabel.frame = CGRect(x: kLeftTextMargin,
+                                          y: secondTextLabel.frame.maxY + CGFloat.convertHeight(h: kSecondToThird, screenSize: screenSize),
+                                          width: adjustedSize.width,
+                                          height: goodThirdSize.height)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+            let goodFourthSize = fourthTextLabel.sizeThatFits(adjustedSize)
+            fourthTextLabel.frame = CGRect(x: kLeftTextMargin,
+                                          y: thirdTextLabel.frame.maxY + CGFloat.convertHeight(h: kThirdToFourth, screenSize: screenSize),
+                                          width: adjustedSize.width,
+                                          height: goodFourthSize.height)
+
+            let newPossibleButtonWidth = self.view.bounds.width * 0.7
+            let buttonWidth = (kTextButtonWidth <= newPossibleButtonWidth) ? kTextButtonWidth : newPossibleButtonWidth
+            beginButton.frame = CGRect(x: width/2 - buttonWidth/2,
+                                       y: fourthTextLabel.frame.maxY + CGFloat.convertHeight(h: kFourthToBegin, screenSize: screenSize),
+                                       width: buttonWidth,
+                                       height: kTextButtonHeight)
+            
+        }
     }
-    */
+
 
 }

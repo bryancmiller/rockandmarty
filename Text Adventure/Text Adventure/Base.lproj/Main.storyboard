@@ -40,6 +40,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="The Basics" id="xui-vb-Yk7"/>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="bdP-3c-bz6" id="8Gm-2q-TVN"/>
+                        <outlet property="titleLabel" destination="H7b-ri-CCe" id="o4e-7W-mOt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6N3-li-ZiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,7 +183,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="beginButton" destination="lpT-W8-ntk" id="e7m-eJ-caH"/>
+                        <outlet property="beginButton" destination="lpT-W8-ntk" id="c1j-bO-ysZ"/>
+                        <outlet property="firstTextLabel" destination="30g-PN-icz" id="v6i-r3-sdK"/>
+                        <outlet property="fourthTextLabel" destination="L2P-aO-gno" id="fr4-Ba-mjN"/>
+                        <outlet property="secondTextLabel" destination="7Qj-jq-R0V" id="Rdw-vW-TZW"/>
+                        <outlet property="thirdTextLabel" destination="RUA-DK-0lc" id="0hS-py-cZb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ui-Eh-Y1u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,7 +329,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created by Bryan Miller, AKA ya boy.               I give credit where it's due, this is clearly a parody of Rick and Morty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyd-Jc-UQP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Created by Bryan Miller, AKA ya boy. I give credit where it's due, this is clearly a parody of Rick and Morty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cyd-Jc-UQP">
                                 <rect key="frame" x="16" y="148" width="343" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -336,6 +344,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Credits" id="yid-LK-7nq"/>
+                    <connections>
+                        <outlet property="pic" destination="27p-en-Z2A" id="0fl-ZR-tQT"/>
+                        <outlet property="textLabel" destination="Cyd-Jc-UQP" id="Y8T-aS-4Zp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7P-Xb-zgQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
