@@ -10,6 +10,19 @@ import UIKit
 import AVFoundation
 import AudioToolbox
 
+let kGameButtonWidth: CGFloat = 93.0
+let kGameButtonHeight: CGFloat = 37.0
+
+let kGameObjectMargin: CGFloat = 12.0
+
+let kNavBarToPlace: CGFloat = 35.0
+let kPlaceToNorthButton: CGFloat = 35.0
+let kNorthButtonToInspectButton: CGFloat = 20.0
+let kInspectButtonToSouthButton: CGFloat = 20.0
+let kSouthButtonToReprintButton: CGFloat = 20.0
+let kInspectButtonToEastButton: CGFloat = 15.0
+let kInspectButtonToWestButton: CGFloat = 15.0
+
 class GameViewController: UIViewController {
     
     var ipod: AVAudioPlayer!
@@ -48,6 +61,62 @@ class GameViewController: UIViewController {
         self.player = Player(maxX: map.n, maxY: map.n)
         reprintDescription()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let screenSize = self.view.bounds
+        let width = screenSize.width
+        let height = screenSize.height
+        
+        if let navigationBar = navigationController?.navigationBar {
+            let navBarHeight = navigationBar.getHeight()
+            
+            let goodPlaceSize = CGSize(width: width - (2 * kGameObjectMargin), height: height * 0.35)
+            descriptionTextView.frame = CGRect(x: kGameObjectMargin,
+                                      y: navBarHeight + CGFloat.convertHeight(h: kNavBarToPlace, screenSize: screenSize),
+                                      width: goodPlaceSize.width,
+                                      height: goodPlaceSize.height)
+            
+            let scaledMargin = CGFloat.convertHeight(h: kGameObjectMargin, screenSize: screenSize)
+            let totalMarginsOfThree: CGFloat = scaledMargin * 4.0
+            let staticTotalWidthOfThree = (kGameButtonWidth * 3) + totalMarginsOfThree
+            let buttonWidth = (staticTotalWidthOfThree <= width)
+                ? kGameButtonWidth
+                : (width - totalMarginsOfThree) / 3
+            
+            northButton.frame = CGRect(x: width/2 - buttonWidth/2,
+                                       y: descriptionTextView.frame.maxY + CGFloat.convertHeight(h: kPlaceToNorthButton, screenSize: screenSize),
+                                       width: buttonWidth,
+                                       height: kGameButtonHeight)
+            
+            inspectButton.frame = CGRect(x: width/2 - buttonWidth/2,
+                                       y: northButton.frame.maxY + CGFloat.convertHeight(h: kNorthButtonToInspectButton, screenSize: screenSize),
+                                       width: buttonWidth,
+                                       height: kGameButtonHeight)
+            
+            eastButton.frame = CGRect(x: inspectButton.frame.maxX + CGFloat.convertWidth(w: kInspectButtonToEastButton, screenSize: screenSize),
+                                      y: inspectButton.frame.minY,
+                                      width: buttonWidth,
+                                      height: kGameButtonHeight)
+            
+            westButton.frame = CGRect(x: inspectButton.frame.minX - CGFloat.convertWidth(w: kInspectButtonToWestButton, screenSize: screenSize) - buttonWidth,
+                                      y: inspectButton.frame.minY,
+                                      width: buttonWidth,
+                                      height: kGameButtonHeight)
+            
+            southButton.frame = CGRect(x: width/2 - buttonWidth/2,
+                                         y: inspectButton.frame.maxY + CGFloat.convertHeight(h: kInspectButtonToSouthButton, screenSize: screenSize),
+                                         width: buttonWidth,
+                                         height: kGameButtonHeight)
+            
+            reprintButton.frame = CGRect(x: width/2 - buttonWidth/2,
+                                       y: southButton.frame.maxY + CGFloat.convertHeight(h: kSouthButtonToReprintButton, screenSize: screenSize),
+                                       width: buttonWidth,
+                                       height: kGameButtonHeight)
+            
+        }
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -103,7 +172,7 @@ class GameViewController: UIViewController {
         }
             
         else if (place.item == "lighthouse key" && player.isInBackPack(item: "golden key")) {
-            descriptionTextView.text = ("you put the golden key in the door and open it up, around you are all the aristocrats hiding from the purge outside, but they've already all been slaughtered... weird. But anyway, on the wall is another key. Hey, it looks like the lighthouse key, that's pretty sweet.")
+            descriptionTextView.text = ("You put the golden key in the door and open it up, around you are all the aristocrats hiding from the purge outside, but they've already all been slaughtered... weird. But anyway, on the wall is another key. Hey, it looks like the lighthouse key, that's pretty sweet.")
             if (!player.isInBackPack(item: "lighthouse key")) {
                 player.addToBackPack(item: place.item)
             }
@@ -139,6 +208,21 @@ class GameViewController: UIViewController {
         else if (place.item == "win") {
             descriptionTextView.text = ("You sent the signal out to your family and they're on their way to save you from this horrible planet. Depending on how long they take you may be able to go back into town and have a little fun during this purge. Click inspect to exit, or just exit.")
             player.addToBackPack(item: place.item)
+            
+            stopSound()
+            
+            let url = Bundle.main.url(forResource: "evil morty - ending scene", withExtension: "wav")!
+            
+            do {
+                ipod = try AVAudioPlayer(contentsOf: url)
+                guard let ipod = ipod else { return }
+                
+                ipod.numberOfLoops = -1
+                ipod.prepareToPlay()
+                ipod.play()
+            } catch let error as NSError {
+                print(error.description)
+            }
         }
     }
     

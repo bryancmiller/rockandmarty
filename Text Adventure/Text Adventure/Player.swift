@@ -25,8 +25,10 @@ class Player {
     func getBackPackItems() -> String {
         var items = ""
         for item in self.backPack {
-            items.append(item)
-            items.append("\n")
+            if item != "win" {
+                items.append(item)
+                items.append("\n")
+            }
         }
         return items
     }

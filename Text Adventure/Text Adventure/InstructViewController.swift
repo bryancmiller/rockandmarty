@@ -8,13 +8,15 @@
 
 import UIKit
 
+let kNavigationBarToTitle: CGFloat = 38.0
+let kTitleToDescriptions: CGFloat = 88.0
+
 class InstructViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    let kNavBarToTitle: CGFloat = 38.0
-    let kTitleToDescription: CGFloat = 88.0
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +47,13 @@ class InstructViewController: UIViewController {
             
             let goodTitleSize = titleLabel.sizeThatFits(CGSize(width: width - 24, height: height))
             titleLabel.frame = CGRect(x: 12,
-                                      y: navBarHeight + CGFloat.convertHeight(h: kNavBarToTitle, screenSize: screenSize),
+                                      y: navBarHeight + CGFloat.convertHeight(h: kNavigationBarToTitle, screenSize: screenSize),
                                       width: width - 24,
                                       height: goodTitleSize.height)
             
             let goodDescriptionSize = descriptionLabel.sizeThatFits(CGSize(width: width - 24, height: height))
             descriptionLabel.frame = CGRect(x: 12,
-                                      y: navBarHeight + CGFloat.convertHeight(h: kTitleToDescription, screenSize: screenSize),
+                                      y: navBarHeight + CGFloat.convertHeight(h: kTitleToDescriptions, screenSize: screenSize),
                                       width: width - 24,
                                       height: goodDescriptionSize.height)
             

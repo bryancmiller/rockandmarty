@@ -42,7 +42,7 @@ class GameMaker {
         let place01 = Place(name: "sea", description: "The water is deep here, we better head back to the church", item: "")
         map.setPlaceAt(place: place01, x: 0, y: 1)
         
-        let place11 = Place(name: "Church", description: "Creepy old amish church", item: "golden key")
+        let place11 = Place(name: "Church", description: "Creepy old amish church, looks like no one has been here in years", item: "golden key")
         map.setPlaceAt(place: place11, x: 1, y: 1)
         
         let place21 = Place(name: "beach", description: "There's a little beach, it is very peaceful here", item: "")

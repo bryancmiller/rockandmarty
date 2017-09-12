@@ -8,13 +8,14 @@
 
 import UIKit
 
+let kNavBarToText: CGFloat = 38.0
+let kTextToPic: CGFloat = 50.0
+
 class CreditViewController: UIViewController {
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var pic: UIImageView!
     
-    let kNavBarToText: CGFloat = 38.0
-    let kTextToPic: CGFloat = 50.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
